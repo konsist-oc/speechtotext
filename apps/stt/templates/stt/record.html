@@ -1,0 +1,59 @@
+<!--inherits the layout-->
+{% extends 'stt/base.html' %}
+<!--static-->
+{% load static %}
+<!--title-->
+{% block title %}{{page_title}}{% endblock title %}
+<!--additional css-->
+
+{% block css %}
+<link href="{% static 'assets/css/video-js.css' %}" rel="stylesheet" />
+<link href="{% static 'assets/css/all.min.css' %}" rel="stylesheet" />
+<link
+  href="{% static 'assets/css/videojs.wavesurfer.min.css' %}"
+  rel="stylesheet"
+/>
+<link href="{% static 'assets/css/style.css' %}" rel="stylesheet" />
+
+<link href="{% static 'assets/css/videojs.record.css' %}" rel="stylesheet" />
+<style>
+  /* change player background color */
+  #recordAudio {
+    background-color: #3e8ed0;
+  }
+</style>
+{% endblock css %}
+<!--content-->
+{% block content %}
+<h1>Speech recognition demo</h1>
+
+    <div id="controls">
+  	 <button id="recordButton">Record</button>
+  	 <button id="pauseButton" disabled>Pause</button>
+  	 <button id="stopButton" disabled>Stop</button>
+    </div>
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+
+	</form>
+
+    <div id="formats">Format: start recording to see sample rate</div>
+  	<p><strong>Recordings:</strong></p>
+  	<ol id="recordingsList"></ol>
+{% endblock content %}
+
+<!--additional js-->
+{% block js %}
+<script src="{% static 'assets/js/video.min.js' %}"></script>
+<script src="{% static 'assets/js/RecordRTC.js' %}"></script>
+<script src="{% static 'assets/js/adapter-latest.js' %}"></script>
+<script src="{% static 'assets/js/wavesurfer.js' %}"></script>
+<script src="{% static 'assets/js/wavesurfer.microphone.min.js' %}"></script>
+<script src="{% static 'assets/js/videojs.wavesurfer.min.js' %}"></script>
+
+<script src="{% static 'assets/js/videojs.record.min.js' %}"></script>
+<script src="{% static 'assets/js/browser-workaround.js' %}"></script>
+<script src="{% static 'assets/js/real.recording.js' %}"></script>
+<script src="{% static 'assets/js/recorder.js' %}"></script>
+<script src="{% static 'assets/js/app.js' %}"></script>
+{% endblock js %}
