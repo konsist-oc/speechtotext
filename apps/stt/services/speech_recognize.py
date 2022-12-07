@@ -1,6 +1,5 @@
 import speech_recognition as sr
 
-
 def speech_recognition(source):
     r = sr.Recognizer()
     # source = "C:/Users/admin/Downloads/111.wav"
